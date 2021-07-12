@@ -44,7 +44,7 @@ $iconOnEvent: calc(
   left: auto;
   position: relative;
   margin: 1em 0 0 0;
-  width: 100%;
+  width: auto;
   background-color: #eee;
 }
 
@@ -128,7 +128,8 @@ $fadeIn: 200ms;
       position: relative;
       top: auto;
       left: auto;
-      width: calc(100% - 1em);
+      // width: calc(100% - 1em);
+      width: auto;
     }
   }
   > ul li:hover ul li ul,

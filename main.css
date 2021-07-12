@@ -47,7 +47,7 @@
     position: relative;
     top: auto;
     left: auto;
-    width: calc(100% - 1em);
+    width: auto;
   }
 }
 .main-nav > ul li:hover ul li ul,
@@ -280,7 +280,7 @@
     left: auto;
     position: relative;
     margin: 1em 0 0 0;
-    width: 100%;
+    width: auto;
     background-color: #eee;
     transition: opacity 200ms ease-in-out;
   }
