@@ -1,0 +1,326 @@
+/* Nav variables & mixins
+   ------------------------------------------------------------ */
+
+// Responsive breakpoint
+$breakpoint: 40em;
+
+// Logo dimensions
+$logoWidth: 3em;
+$logoHeight: 3em; // also used to set nav height
+
+// Layout
+$itemSpacing: 1em; // level one link padding l & r
+$submenuItemSpacing: 1em; // level two and three link padding l & r
+$itemHeightMobile: auto; // line-height for items when the nav is a column
+$flyoutWidth: 10em; // min-width for submenu flyout
+
+// Colors
+$navBG: #fff;
+$linkColor: #000;
+$submenuLinkColor: #000;
+$subSubmenuLinkColor: #000;
+$submenuBG: #eee;
+$subSubmenuBG: #ddd;
+
+// Toggle button
+$webkit-tap-highlight-color: blue;
+$toggleTextColor: black;
+$toggleBG: white;
+$iconColor: black;
+$iconWidth: 44px;
+$iconHeight: 4px;
+$iconMargin: 5px;
+$iconOnEvent: calc(
+  #{$iconHeight} + #{$iconMargin}
+); // Rotation translation is automatically calculated by changing the values for height and margin.
+@mixin togglePosition {
+  top: 2em;
+  right: 1em;
+}
+
+// Mobile nav placement
+@mixin mobileMenuPosition {
+  top: auto;
+  left: auto;
+  position: relative;
+  margin: 1em 0 0 0;
+  width: 100%;
+  background-color: #eee;
+}
+
+@mixin mobileShowAnimation {
+  transition: opacity $fadeIn ease-in-out;
+}
+
+// Level 1 link hover styles
+@mixin linkHover {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0.2em;
+  text-underline-offset: 0.35em;
+}
+
+// Current page link styles
+@mixin currentPage {
+  font-weight: bold;
+}
+
+// Fade-in animation time
+$fadeIn: 200ms;
+
+// Visually hidden styles for submenus
+@mixin hide {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  visibility: hidden;
+  opacity: 0; // For the animated fade-in
+}
+
+@mixin showAnimation {
+  transition: $fadeIn opacity ease-in-out;
+}
+
+@mixin show {
+  clip: auto;
+  clip-path: none;
+  height: auto;
+  overflow: visible;
+  width: auto;
+  visibility: visible;
+  opacity: 1;
+  transition: 0;
+}
+
+/* Styles
+   ------------------------------------------------------------ */
+
+// Submenu functionality
+.main-nav {
+  > ul li ul {
+    @include hide;
+    @include showAnimation;
+
+    // Uncomment to show the entire nav structure in the mobile flyout and edit the rest of the section accordingly.
+    /*
+    @include show;
+    top: $logoHeight;
+    left: 0;
+    width: auto;
+    @media screen and (max-width: $breakpoint) {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: calc(100% - 1em);
+    }*/
+  }
+  > ul li:hover ul,
+  > ul li.focus ul {
+    @include show;
+    top: $logoHeight;
+    left: 0;
+    width: auto;
+    @media screen and (max-width: $breakpoint) {
+      position: relative;
+      top: auto;
+      left: auto;
+      width: calc(100% - 1em);
+    }
+  }
+  > ul li:hover ul li ul,
+  > ul li.focus ul li ul {
+    @include hide;
+    @include showAnimation;
+  }
+  > ul li ul li:hover ul,
+  > ul li ul li.focus ul {
+    @include show;
+    top: 0;
+    left: 100%;
+    width: auto;
+
+    @media screen and (max-width: $breakpoint) {
+      position: relative;
+      top: auto;
+      left: auto;
+    }
+  }
+}
+
+/* Default styles 
+   ------------------------------ */
+.main-nav {
+  background: $navBG;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    width: $logoWidth;
+    height: $logoHeight;
+  }
+
+  &__logo-svg {
+    width: $logoWidth;
+    height: $logoHeight;
+  }
+
+  a {
+    color: $linkColor;
+    text-decoration: none;
+  }
+
+  &__menu {
+    position: relative;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+
+  &__menu-item {
+    padding: 0 $itemSpacing;
+    &:last-of-type {
+      padding-right: 0;
+    }
+    &:hover:not([aria-current="page"]) {
+      @include linkHover;
+    }
+    &[aria-current="page"] {
+      @include currentPage;
+    }
+
+    &--has-submenu {
+      padding: 0 $itemSpacing;
+      position: relative;
+      &[aria-current="page"] {
+        @include currentPage;
+      }
+      @media screen and (max-width: $breakpoint) {
+        width: calc(100% - 1em);
+      }
+    }
+    @media screen and (max-width: $breakpoint) {
+      width: calc(100% - 1em);
+    }
+  }
+
+  &__menu-item-link {
+    height: $logoHeight;
+    line-height: $logoHeight;
+  }
+
+  &__menu-item-link,
+  &__submenu-item-link,
+  &__sub-submenu-item-link {
+    display: block;
+  }
+
+  &__submenu {
+    background: $submenuBG;
+  }
+  &__submenu-item {
+    &--has-sub-submenu {
+      position: relative;
+      display: block;
+    }
+  }
+  &__submenu-item-link {
+    padding: $submenuItemSpacing;
+    white-space: nowrap;
+  }
+
+  &__sub-submenu {
+    background: $subSubmenuBG;
+    @media screen and (max-width: $breakpoint) {
+      background: $subSubmenuBG;
+    }
+  }
+  &__sub-submenu-item {
+    background: $subSubmenuBG;
+  }
+  &__sub-submenu-item-link {
+    padding: $submenuItemSpacing;
+    white-space: nowrap;
+  }
+}
+
+/* Toggle button 
+   ------------------------------ */
+.nav-toggle {
+  display: none;
+  -webkit-tap-highlight-color: $webkit-tap-highlight-color;
+  -webkit-touch-callout: none;
+  user-select: none;
+  border: none;
+  color: $toggleTextColor;
+  background-color: $toggleBG;
+  text-decoration: none;
+  position: relative;
+  padding: 0;
+
+  @media screen and (max-width: $breakpoint) {
+    display: block;
+    position: absolute;
+    @include togglePosition;
+  }
+
+  &__text {
+  }
+
+  &__icon {
+    width: $iconWidth;
+    &:after,
+    &:before,
+    div {
+      background-color: $iconColor;
+      border-radius: $iconHeight;
+      content: "";
+      display: block;
+      height: $iconHeight;
+      margin: $iconMargin;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &.is-active {
+    .nav-toggle__icon {
+      &:hover:before {
+        transform: translateY($iconOnEvent) rotate(135deg);
+      }
+      &:hover:after {
+        transform: translateY(calc(#{$iconOnEvent} * -1)) rotate(-135deg);
+      }
+      &:hover div {
+        transform: scale(0);
+      }
+    }
+  }
+}
+
+/* Below breakpoint styles
+   ------------------------------ */
+.main-nav {
+  @media screen and (max-width: $breakpoint) {
+    position: relative;
+    display: block;
+
+    &__menu {
+      @include hide;
+      flex-direction: column;
+
+      &.is-active {
+        @include show;
+        @include mobileMenuPosition;
+        @include mobileShowAnimation;
+      }
+    }
+  }
+}
