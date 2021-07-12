@@ -162,6 +162,11 @@ $fadeIn: 200ms;
   justify-content: space-between;
   align-items: center;
 
+  @media screen and (max-width: $breakpoint) {
+    position: relative;
+    display: block;
+  }
+
   &__logo {
     width: $logoWidth;
     height: $logoHeight;
@@ -184,6 +189,17 @@ $fadeIn: 200ms;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: flex-start;
+
+    @media screen and (max-width: $breakpoint) {
+      @include hide;
+      flex-direction: column;
+
+      &.is-active {
+        @include show;
+        @include mobileMenuPosition;
+        @include mobileShowAnimation;
+      }
+    }
   }
 
   &__menu-item {
@@ -256,68 +272,70 @@ $fadeIn: 200ms;
 /* Toggle button 
    ------------------------------ */
 .nav-toggle {
-  display: none;
-  -webkit-tap-highlight-color: $webkit-tap-highlight-color;
-  -webkit-touch-callout: none;
-  user-select: none;
-  border: none;
-  color: $toggleTextColor;
-  background-color: $toggleBG;
-  text-decoration: none;
-  position: relative;
-  padding: 0;
+  display: none; // JavaScript disabled; hide the toggle button
+}
 
-  @media screen and (max-width: $breakpoint) {
-    display: block;
-    position: absolute;
-    @include togglePosition;
-  }
+.js {
+  // JavaScript enabled
+  .nav-toggle {
+    -webkit-tap-highlight-color: $webkit-tap-highlight-color;
+    -webkit-touch-callout: none;
+    user-select: none;
+    border: none;
+    color: $toggleTextColor;
+    background-color: $toggleBG;
+    text-decoration: none;
+    position: relative;
+    padding: 0;
 
-  &__text {
-  }
-
-  &__icon {
-    width: $iconWidth;
-    &:after,
-    &:before,
-    div {
-      background-color: $iconColor;
-      border-radius: $iconHeight;
-      content: "";
+    @media screen and (max-width: $breakpoint) {
       display: block;
-      height: $iconHeight;
-      margin: $iconMargin;
-      transition: all 0.2s ease-in-out;
+      position: absolute;
+      @include togglePosition;
     }
-  }
 
-  &.is-active {
-    .nav-toggle__icon {
-      &:hover:before {
-        transform: translateY($iconOnEvent) rotate(135deg);
+    &__text {
+    }
+
+    &__icon {
+      width: $iconWidth;
+      &:after,
+      &:before,
+      div {
+        background-color: $iconColor;
+        border-radius: $iconHeight;
+        content: "";
+        display: block;
+        height: $iconHeight;
+        margin: $iconMargin;
+        transition: all 0.2s ease-in-out;
       }
-      &:hover:after {
-        transform: translateY(calc(#{$iconOnEvent} * -1)) rotate(-135deg);
-      }
-      &:hover div {
-        transform: scale(0);
+    }
+
+    &.is-active {
+      .nav-toggle__icon {
+        &:hover:before {
+          transform: translateY($iconOnEvent) rotate(135deg);
+        }
+        &:hover:after {
+          transform: translateY(calc(#{$iconOnEvent} * -1)) rotate(-135deg);
+        }
+        &:hover div {
+          transform: scale(0);
+        }
       }
     }
   }
 }
 
-/* Below breakpoint styles
+/* JavaScript disabled
    ------------------------------ */
-.main-nav {
-  @media screen and (max-width: $breakpoint) {
-    position: relative;
-    display: block;
-
+html:not(.js) {
+  .main-nav {
     &__menu {
-      @include hide;
-      flex-direction: column;
-
-      &.is-active {
+      @media screen and (max-width: $breakpoint) {
+        // Show the nav
+        flex-direction: column;
         @include show;
         @include mobileMenuPosition;
         @include mobileShowAnimation;

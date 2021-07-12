@@ -102,6 +102,12 @@
   -webkit-align-items: center;
           align-items: center;
 }
+@media screen and (max-width: 40em) {
+  .main-nav {
+    position: relative;
+    display: block;
+  }
+}
 .main-nav__logo {
   width: 3em;
   height: 3em;
@@ -125,6 +131,40 @@
           flex-wrap: nowrap;
   -webkit-align-items: flex-start;
           align-items: flex-start;
+}
+@media screen and (max-width: 40em) {
+  .main-nav__menu {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(50%);
+            clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-flex-direction: column;
+            flex-direction: column;
+  }
+  .main-nav__menu.is-active {
+    clip: auto;
+    -webkit-clip-path: none;
+            clip-path: none;
+    height: auto;
+    overflow: visible;
+    width: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: 0;
+    top: auto;
+    left: auto;
+    position: relative;
+    margin: 1em 0 0 0;
+    width: auto;
+    background-color: #eee;
+    transition: opacity 200ms ease-in-out;
+  }
 }
 .main-nav__menu-item {
   padding: 0 1em;
@@ -198,6 +238,9 @@
    ------------------------------ */
 .nav-toggle {
   display: none;
+}
+
+.js .nav-toggle {
   -webkit-tap-highlight-color: blue;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -212,18 +255,18 @@
   padding: 0;
 }
 @media screen and (max-width: 40em) {
-  .nav-toggle {
+  .js .nav-toggle {
     display: block;
     position: absolute;
     top: 2em;
     right: 1em;
   }
 }
-.nav-toggle__icon {
+.js .nav-toggle__icon {
   width: 44px;
 }
-.nav-toggle__icon:after, .nav-toggle__icon:before,
-.nav-toggle__icon div {
+.js .nav-toggle__icon:after, .js .nav-toggle__icon:before,
+.js .nav-toggle__icon div {
   background-color: black;
   border-radius: 4px;
   content: "";
@@ -232,41 +275,25 @@
   margin: 5px;
   transition: all 0.2s ease-in-out;
 }
-.nav-toggle.is-active .nav-toggle__icon:hover:before {
+.js .nav-toggle.is-active .nav-toggle__icon:hover:before {
   -webkit-transform: translateY(calc( 4px + 5px )) rotate(135deg);
           transform: translateY(calc( 4px + 5px )) rotate(135deg);
 }
-.nav-toggle.is-active .nav-toggle__icon:hover:after {
+.js .nav-toggle.is-active .nav-toggle__icon:hover:after {
   -webkit-transform: translateY(calc(calc( 4px + 5px ) * -1)) rotate(-135deg);
           transform: translateY(calc(calc( 4px + 5px ) * -1)) rotate(-135deg);
 }
-.nav-toggle.is-active .nav-toggle__icon:hover div {
+.js .nav-toggle.is-active .nav-toggle__icon:hover div {
   -webkit-transform: scale(0);
           transform: scale(0);
 }
 
-/* Below breakpoint styles
+/* JavaScript disabled
    ------------------------------ */
 @media screen and (max-width: 40em) {
-  .main-nav {
-    position: relative;
-    display: block;
-  }
-  .main-nav__menu {
-    clip: rect(0 0 0 0);
-    -webkit-clip-path: inset(50%);
-            clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-    visibility: hidden;
-    opacity: 0;
+  html:not(.js) .main-nav__menu {
     -webkit-flex-direction: column;
             flex-direction: column;
-  }
-  .main-nav__menu.is-active {
     clip: auto;
     -webkit-clip-path: none;
             clip-path: none;
