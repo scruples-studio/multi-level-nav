@@ -272,74 +272,71 @@ $fadeIn: 200ms;
 /* Toggle button 
    ------------------------------ */
 .nav-toggle {
-  display: none; // JavaScript disabled; hide the toggle button
-}
+  -webkit-tap-highlight-color: $webkit-tap-highlight-color;
+  -webkit-touch-callout: none;
+  user-select: none;
+  border: none;
+  color: $toggleTextColor;
+  background-color: $toggleBG;
+  text-decoration: none;
+  position: relative;
+  padding: 0;
 
-.js {
-  // JavaScript enabled
-  .nav-toggle {
-    -webkit-tap-highlight-color: $webkit-tap-highlight-color;
-    -webkit-touch-callout: none;
-    user-select: none;
-    border: none;
-    color: $toggleTextColor;
-    background-color: $toggleBG;
-    text-decoration: none;
-    position: relative;
-    padding: 0;
+  @media screen and (max-width: $breakpoint) {
+    display: block;
+    position: absolute;
+    @include togglePosition;
+  }
 
-    @media screen and (max-width: $breakpoint) {
+  &__text {
+  }
+
+  &__icon {
+    width: $iconWidth;
+    &:after,
+    &:before,
+    div {
+      background-color: $iconColor;
+      border-radius: $iconHeight;
+      content: "";
       display: block;
-      position: absolute;
-      @include togglePosition;
+      height: $iconHeight;
+      margin: $iconMargin;
+      transition: all 0.2s ease-in-out;
     }
+  }
 
-    &__text {
-    }
-
-    &__icon {
-      width: $iconWidth;
-      &:after,
-      &:before,
-      div {
-        background-color: $iconColor;
-        border-radius: $iconHeight;
-        content: "";
-        display: block;
-        height: $iconHeight;
-        margin: $iconMargin;
-        transition: all 0.2s ease-in-out;
+  &.is-active {
+    .nav-toggle__icon {
+      &:before {
+        transform: translateY($iconOnEvent) rotate(135deg);
       }
-    }
-
-    &.is-active {
-      .nav-toggle__icon {
-        &:hover:before {
-          transform: translateY($iconOnEvent) rotate(135deg);
-        }
-        &:hover:after {
-          transform: translateY(calc(#{$iconOnEvent} * -1)) rotate(-135deg);
-        }
-        &:hover div {
-          transform: scale(0);
-        }
+      &:after {
+        transform: translateY(calc(#{$iconOnEvent} * -1)) rotate(-135deg);
+      }
+      div {
+        transform: scale(0);
       }
     }
   }
 }
 
-/* JavaScript disabled
+/* // JavaScript is disabled
    ------------------------------ */
 html:not(.js) {
   .main-nav {
     &__menu {
+      // Show the mobile nav by default
       @media screen and (max-width: $breakpoint) {
-        // Show the nav
         flex-direction: column;
         @include show;
         @include mobileMenuPosition;
         @include mobileShowAnimation;
       }
     }
+  }
+  .nav-toggle {
+    // Remove the toggle button
+    display: none;
   }
 }

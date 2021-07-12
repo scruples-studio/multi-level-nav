@@ -237,10 +237,6 @@
 /* Toggle button 
    ------------------------------ */
 .nav-toggle {
-  display: none;
-}
-
-.js .nav-toggle {
   -webkit-tap-highlight-color: blue;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -255,18 +251,18 @@
   padding: 0;
 }
 @media screen and (max-width: 40em) {
-  .js .nav-toggle {
+  .nav-toggle {
     display: block;
     position: absolute;
     top: 2em;
     right: 1em;
   }
 }
-.js .nav-toggle__icon {
+.nav-toggle__icon {
   width: 44px;
 }
-.js .nav-toggle__icon:after, .js .nav-toggle__icon:before,
-.js .nav-toggle__icon div {
+.nav-toggle__icon:after, .nav-toggle__icon:before,
+.nav-toggle__icon div {
   background-color: black;
   border-radius: 4px;
   content: "";
@@ -275,20 +271,20 @@
   margin: 5px;
   transition: all 0.2s ease-in-out;
 }
-.js .nav-toggle.is-active .nav-toggle__icon:hover:before {
+.nav-toggle.is-active .nav-toggle__icon:before {
   -webkit-transform: translateY(calc( 4px + 5px )) rotate(135deg);
           transform: translateY(calc( 4px + 5px )) rotate(135deg);
 }
-.js .nav-toggle.is-active .nav-toggle__icon:hover:after {
+.nav-toggle.is-active .nav-toggle__icon:after {
   -webkit-transform: translateY(calc(calc( 4px + 5px ) * -1)) rotate(-135deg);
           transform: translateY(calc(calc( 4px + 5px ) * -1)) rotate(-135deg);
 }
-.js .nav-toggle.is-active .nav-toggle__icon:hover div {
+.nav-toggle.is-active .nav-toggle__icon div {
   -webkit-transform: scale(0);
           transform: scale(0);
 }
 
-/* JavaScript disabled
+/* // JavaScript is disabled
    ------------------------------ */
 @media screen and (max-width: 40em) {
   html:not(.js) .main-nav__menu {
@@ -311,6 +307,9 @@
     background-color: #eee;
     transition: opacity 200ms ease-in-out;
   }
+}
+html:not(.js) .nav-toggle {
+  display: none;
 }
 
 /*# sourceMappingURL=main.css.map */
