@@ -105,7 +105,7 @@ $fadeIn: 200ms;
     @include hide;
     @include showAnimation;
 
-    // Uncomment to show the entire nav structure in the mobile flyout and edit the rest of the section accordingly.
+    // Uncomment to show the entire nav structure in the mobile flyout and edit the rest of the "Submenu functionality" section accordingly.
     /*
     @include show;
     top: $logoHeight;
@@ -274,22 +274,23 @@ $fadeIn: 200ms;
 .nav-toggle {
   -webkit-tap-highlight-color: $webkit-tap-highlight-color;
   -webkit-touch-callout: none;
-  user-select: none;
-  border: none;
-  color: $toggleTextColor;
-  background-color: $toggleBG;
-  text-decoration: none;
-  position: relative;
-  padding: 0;
   display: none;
 
   @media screen and (max-width: $breakpoint) {
     display: block;
+    user-select: none;
+    border: none;
+    color: $toggleTextColor;
+    background-color: $toggleBG;
+    text-decoration: none;
+    padding: 0;
     position: absolute;
     @include togglePosition;
   }
 
   &__text {
+    // Toggle button label
+    // Add styles and remove the "hidden" attribute from the nav-toggle__text wrapper in the html
   }
 
   &__icon {

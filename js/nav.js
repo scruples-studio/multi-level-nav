@@ -3,12 +3,9 @@ var html = document.documentElement;
 html.className += ' js';
 
 // Add a one second delay to submenu display for mouse users.
-
-// The submenu links
 const hasSubmenu = document.querySelectorAll(
   "li.main-nav__menu-item--has-submenu"
 );
-// The timer
 var timerSubmenu;
 Array.prototype.forEach.call(hasSubmenu, function (el, i) {
   // Add .focus class on mouseover
@@ -68,10 +65,9 @@ submenuLinks.forEach((link) => {
   }
 });
 
-// Toggle
+// Toggle button functionality
 var toggle = document.querySelector("#nav-toggle");
 var menu = document.querySelector("#menu");
-
 toggle.addEventListener("click", function () {
   if (menu.classList.contains("is-active")) {
     menu.classList.remove("is-active");

@@ -239,21 +239,20 @@
 .nav-toggle {
   -webkit-tap-highlight-color: blue;
   -webkit-touch-callout: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  border: none;
-  color: black;
-  background-color: white;
-  text-decoration: none;
-  position: relative;
-  padding: 0;
   display: none;
 }
 @media screen and (max-width: 40em) {
   .nav-toggle {
     display: block;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    border: none;
+    color: black;
+    background-color: white;
+    text-decoration: none;
+    padding: 0;
     position: absolute;
     top: 2em;
     right: 1em;
