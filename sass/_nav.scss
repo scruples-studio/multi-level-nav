@@ -281,6 +281,7 @@ $fadeIn: 200ms;
   text-decoration: none;
   position: relative;
   padding: 0;
+  display: none;
 
   @media screen and (max-width: $breakpoint) {
     display: block;
