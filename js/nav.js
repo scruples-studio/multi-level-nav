@@ -4,14 +4,14 @@ html.className += ' js';
 
 // Add a one second delay to submenu display for mouse users.
 const hasSubmenu = document.querySelectorAll(
-  "li.main-nav__menu-item--has-submenu"
+  "li.mainNav-menuItem--hasSubmenu"
 );
 var timerSubmenu;
 Array.prototype.forEach.call(hasSubmenu, function (el, i) {
   // Add .focus class on mouseover
   el.addEventListener("mouseover", function (event) {
     document
-      .querySelector("li.main-nav__menu-item--has-submenu")
+      .querySelector("li.mainNav-menuItem--hasSubmenu")
       .classList.add("focus");
     clearTimeout(timerSubmenu);
   });
@@ -25,15 +25,15 @@ Array.prototype.forEach.call(hasSubmenu, function (el, i) {
 
 // Set up the parent link as the submenu toggle
 var submenuItems = document.querySelectorAll(
-  "li.main-nav__menu-item--has-submenu"
+  "li.mainNav-menuItem--hasSubmenu"
 );
 Array.prototype.forEach.call(submenuItems, function (el, i) {
   el.querySelector("a").addEventListener("click", function (event) {
-    if (this.parentNode.className == "main-nav__menu-item--has-submenu") {
-      this.parentNode.className = "main-nav__menu-item--has-submenu open";
+    if (this.parentNode.className == "mainNav-menuItem--hasSubmenu") {
+      this.parentNode.className = "mainNav-menuItem--hasSubmenu open";
       this.setAttribute("aria-expanded", "true");
     } else {
-      this.parentNode.className = "main-nav__menu-item--has-submenu";
+      this.parentNode.className = "mainNav-menuItem--hasSubmenu";
       this.setAttribute("aria-expanded", "false");
     }
     event.preventDefault();
@@ -44,7 +44,7 @@ Array.prototype.forEach.call(submenuItems, function (el, i) {
 // Operate the nav using focus and blur – i.e. tabbing via keyboard
 // Get links with the submenu and sub-submenu classes
 const submenuLinks = document.querySelectorAll(
-  ".main-nav__menu-item-link, .main-nav__submenu-item-link"
+  ".mainNav-menuItemLink, .mainNav-submenuItemLink"
 );
 submenuLinks.forEach((link) => {
   if (link.nextElementSibling) {
@@ -66,14 +66,14 @@ submenuLinks.forEach((link) => {
 });
 
 // Toggle button functionality
-var toggle = document.querySelector("#nav-toggle");
+var toggle = document.querySelector("#navToggle");
 var menu = document.querySelector("#menu");
 toggle.addEventListener("click", function () {
-  if (menu.classList.contains("is-active")) {
-    menu.classList.remove("is-active");
-    toggle.classList.remove("is-active");
+  if (menu.classList.contains("isActive")) {
+    menu.classList.remove("isActive");
+    toggle.classList.remove("isActive");
   } else {
-    menu.classList.add("is-active");
-    toggle.classList.add("is-active");
+    menu.classList.add("isActive");
+    toggle.classList.add("isActive");
   }
 });

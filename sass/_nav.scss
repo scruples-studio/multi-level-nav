@@ -100,7 +100,7 @@ $fadeIn: 200ms;
    ------------------------------------------------------------ */
 
 // Submenu functionality
-.main-nav {
+.mainNav {
   > ul li ul {
     @include hide;
     @include showAnimation;
@@ -115,7 +115,7 @@ $fadeIn: 200ms;
       position: relative;
       top: auto;
       left: auto;
-      width: calc(100% - 1em);
+      width: auto;
     }*/
   }
   > ul li:hover ul,
@@ -128,7 +128,6 @@ $fadeIn: 200ms;
       position: relative;
       top: auto;
       left: auto;
-      // width: calc(100% - 1em);
       width: auto;
     }
   }
@@ -154,7 +153,7 @@ $fadeIn: 200ms;
 
 /* Default styles 
    ------------------------------ */
-.main-nav {
+.mainNav {
   background: $navBG;
   padding: 1em;
   display: flex;
@@ -167,12 +166,12 @@ $fadeIn: 200ms;
     display: block;
   }
 
-  &__logo {
+  &-logo {
     width: $logoWidth;
     height: $logoHeight;
   }
 
-  &__logo-svg {
+  &-logoSvg {
     width: $logoWidth;
     height: $logoHeight;
   }
@@ -182,7 +181,7 @@ $fadeIn: 200ms;
     text-decoration: none;
   }
 
-  &__menu {
+  &-menu {
     position: relative;
     list-style-type: none;
     display: flex;
@@ -194,7 +193,7 @@ $fadeIn: 200ms;
       @include hide;
       flex-direction: column;
 
-      &.is-active {
+      &.isActive {
         @include show;
         @include mobileMenuPosition;
         @include mobileShowAnimation;
@@ -202,7 +201,7 @@ $fadeIn: 200ms;
     }
   }
 
-  &__menu-item {
+  &-menuItem {
     padding: 0 $itemSpacing;
     &:last-of-type {
       padding-right: 0;
@@ -214,7 +213,7 @@ $fadeIn: 200ms;
       @include currentPage;
     }
 
-    &--has-submenu {
+    &--hasSubmenu {
       padding: 0 $itemSpacing;
       position: relative;
       &[aria-current="page"] {
@@ -229,41 +228,41 @@ $fadeIn: 200ms;
     }
   }
 
-  &__menu-item-link {
+  &-menuItemLink {
     height: $logoHeight;
     line-height: $logoHeight;
   }
 
-  &__menu-item-link,
-  &__submenu-item-link,
-  &__sub-submenu-item-link {
+  &_menuItemLink,
+  &-submenuItemLink,
+  &-subSubmenuItemLink {
     display: block;
   }
 
-  &__submenu {
+  &-submenu {
     background: $submenuBG;
   }
-  &__submenu-item {
-    &--has-sub-submenu {
+  &-submenuItem {
+    &--hasSubSubmenu {
       position: relative;
       display: block;
     }
   }
-  &__submenu-item-link {
+  &-submenuItemLink {
     padding: $submenuItemSpacing;
     white-space: nowrap;
   }
 
-  &__sub-submenu {
+  &-subSubmenu {
     background: $subSubmenuBG;
     @media screen and (max-width: $breakpoint) {
       background: $subSubmenuBG;
     }
   }
-  &__sub-submenu-item {
+  &-subSubmenuItem {
     background: $subSubmenuBG;
   }
-  &__sub-submenu-item-link {
+  &-subSubmenuItemLink {
     padding: $submenuItemSpacing;
     white-space: nowrap;
   }
@@ -271,7 +270,7 @@ $fadeIn: 200ms;
 
 /* Toggle button 
    ------------------------------ */
-.nav-toggle {
+.navToggle {
   -webkit-tap-highlight-color: $webkit-tap-highlight-color;
   -webkit-touch-callout: none;
   display: none;
@@ -288,12 +287,12 @@ $fadeIn: 200ms;
     @include togglePosition;
   }
 
-  &__text {
+  &-text {
     // Toggle button label
     // Add styles and remove the "hidden" attribute from the nav-toggle__text wrapper in the html
   }
 
-  &__icon {
+  &-icon {
     width: $iconWidth;
     &:after,
     &:before,
@@ -308,8 +307,8 @@ $fadeIn: 200ms;
     }
   }
 
-  &.is-active {
-    .nav-toggle__icon {
+  &.isActive {
+    .navToggle-icon {
       &:before {
         transform: translateY($iconOnEvent) rotate(135deg);
       }
@@ -326,8 +325,8 @@ $fadeIn: 200ms;
 /* // JavaScript is disabled
    ------------------------------ */
 html:not(.js) {
-  .main-nav {
-    &__menu {
+  .mainNav {
+    &-menu {
       // Show the mobile nav by default
       @media screen and (max-width: $breakpoint) {
         flex-direction: column;
@@ -337,7 +336,7 @@ html:not(.js) {
       }
     }
   }
-  .nav-toggle {
+  .navToggle {
     // Remove the toggle button
     display: none;
   }

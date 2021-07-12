@@ -2,7 +2,7 @@
    ------------------------------------------------------------ */
 /* Styles
    ------------------------------------------------------------ */
-.main-nav > ul li ul {
+.mainNav > ul li ul {
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);
           clip-path: inset(50%);
@@ -23,11 +23,11 @@
     position: relative;
     top: auto;
     left: auto;
-    width: calc(100% - 1em);
+    width: auto;
   }*/
 }
-.main-nav > ul li:hover ul,
-.main-nav > ul li.focus ul {
+.mainNav > ul li:hover ul,
+.mainNav > ul li.focus ul {
   clip: auto;
   -webkit-clip-path: none;
           clip-path: none;
@@ -42,16 +42,16 @@
   width: auto;
 }
 @media screen and (max-width: 40em) {
-  .main-nav > ul li:hover ul,
-.main-nav > ul li.focus ul {
+  .mainNav > ul li:hover ul,
+.mainNav > ul li.focus ul {
     position: relative;
     top: auto;
     left: auto;
     width: auto;
   }
 }
-.main-nav > ul li:hover ul li ul,
-.main-nav > ul li.focus ul li ul {
+.mainNav > ul li:hover ul li ul,
+.mainNav > ul li.focus ul li ul {
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);
           clip-path: inset(50%);
@@ -64,8 +64,8 @@
   opacity: 0;
   transition: 200ms opacity ease-in-out;
 }
-.main-nav > ul li ul li:hover ul,
-.main-nav > ul li ul li.focus ul {
+.mainNav > ul li ul li:hover ul,
+.mainNav > ul li ul li.focus ul {
   clip: auto;
   -webkit-clip-path: none;
           clip-path: none;
@@ -80,8 +80,8 @@
   width: auto;
 }
 @media screen and (max-width: 40em) {
-  .main-nav > ul li ul li:hover ul,
-.main-nav > ul li ul li.focus ul {
+  .mainNav > ul li ul li:hover ul,
+.mainNav > ul li ul li.focus ul {
     position: relative;
     top: auto;
     left: auto;
@@ -90,7 +90,7 @@
 
 /* Default styles 
    ------------------------------ */
-.main-nav {
+.mainNav {
   background: #fff;
   padding: 1em;
   display: -webkit-flex;
@@ -103,24 +103,24 @@
           align-items: center;
 }
 @media screen and (max-width: 40em) {
-  .main-nav {
+  .mainNav {
     position: relative;
     display: block;
   }
 }
-.main-nav__logo {
+.mainNav-logo {
   width: 3em;
   height: 3em;
 }
-.main-nav__logo-svg {
+.mainNav-logoSvg {
   width: 3em;
   height: 3em;
 }
-.main-nav a {
+.mainNav a {
   color: #000;
   text-decoration: none;
 }
-.main-nav__menu {
+.mainNav-menu {
   position: relative;
   list-style-type: none;
   display: -webkit-flex;
@@ -133,7 +133,7 @@
           align-items: flex-start;
 }
 @media screen and (max-width: 40em) {
-  .main-nav__menu {
+  .mainNav-menu {
     clip: rect(0 0 0 0);
     -webkit-clip-path: inset(50%);
             clip-path: inset(50%);
@@ -147,7 +147,7 @@
     -webkit-flex-direction: column;
             flex-direction: column;
   }
-  .main-nav__menu.is-active {
+  .mainNav-menu.isActive {
     clip: auto;
     -webkit-clip-path: none;
             clip-path: none;
@@ -166,13 +166,13 @@
     transition: opacity 200ms ease-in-out;
   }
 }
-.main-nav__menu-item {
+.mainNav-menuItem {
   padding: 0 1em;
 }
-.main-nav__menu-item:last-of-type {
+.mainNav-menuItem:last-of-type {
   padding-right: 0;
 }
-.main-nav__menu-item:hover:not([aria-current=page]) {
+.mainNav-menuItem:hover:not([aria-current=page]) {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
   -webkit-text-decoration-style: solid;
@@ -180,69 +180,69 @@
   text-decoration-thickness: 0.2em;
   text-underline-offset: 0.35em;
 }
-.main-nav__menu-item[aria-current=page] {
+.mainNav-menuItem[aria-current=page] {
   font-weight: bold;
 }
-.main-nav__menu-item--has-submenu {
+.mainNav-menuItem--hasSubmenu {
   padding: 0 1em;
   position: relative;
 }
-.main-nav__menu-item--has-submenu[aria-current=page] {
+.mainNav-menuItem--hasSubmenu[aria-current=page] {
   font-weight: bold;
 }
 @media screen and (max-width: 40em) {
-  .main-nav__menu-item--has-submenu {
+  .mainNav-menuItem--hasSubmenu {
     width: calc(100% - 1em);
   }
 }
 @media screen and (max-width: 40em) {
-  .main-nav__menu-item {
+  .mainNav-menuItem {
     width: calc(100% - 1em);
   }
 }
-.main-nav__menu-item-link {
+.mainNav-menuItemLink {
   height: 3em;
   line-height: 3em;
 }
-.main-nav__menu-item-link, .main-nav__submenu-item-link, .main-nav__sub-submenu-item-link {
+.mainNav_menuItemLink, .mainNav-submenuItemLink, .mainNav-subSubmenuItemLink {
   display: block;
 }
-.main-nav__submenu {
+.mainNav-submenu {
   background: #eee;
 }
-.main-nav__submenu-item--has-sub-submenu {
+.mainNav-submenuItem--hasSubSubmenu {
   position: relative;
   display: block;
 }
-.main-nav__submenu-item-link {
+.mainNav-submenuItemLink {
   padding: 1em;
   white-space: nowrap;
 }
-.main-nav__sub-submenu {
+.mainNav-subSubmenu {
   background: #ddd;
 }
 @media screen and (max-width: 40em) {
-  .main-nav__sub-submenu {
+  .mainNav-subSubmenu {
     background: #ddd;
   }
 }
-.main-nav__sub-submenu-item {
+.mainNav-subSubmenuItem {
   background: #ddd;
 }
-.main-nav__sub-submenu-item-link {
+.mainNav-subSubmenuItemLink {
   padding: 1em;
   white-space: nowrap;
 }
 
 /* Toggle button 
    ------------------------------ */
-.nav-toggle {
+.navToggle {
   -webkit-tap-highlight-color: blue;
   -webkit-touch-callout: none;
   display: none;
 }
 @media screen and (max-width: 40em) {
-  .nav-toggle {
+  .navToggle {
     display: block;
     -webkit-user-select: none;
        -moz-user-select: none;
@@ -258,11 +258,11 @@
     right: 1em;
   }
 }
-.nav-toggle__icon {
+.navToggle-icon {
   width: 44px;
 }
-.nav-toggle__icon:after, .nav-toggle__icon:before,
-.nav-toggle__icon div {
+.navToggle-icon:after, .navToggle-icon:before,
+.navToggle-icon div {
   background-color: black;
   border-radius: 4px;
   content: "";
@@ -271,15 +271,15 @@
   margin: 5px;
   transition: all 0.2s ease-in-out;
 }
-.nav-toggle.is-active .nav-toggle__icon:before {
+.navToggle.isActive .navToggle-icon:before {
   -webkit-transform: translateY(calc( 4px + 5px )) rotate(135deg);
           transform: translateY(calc( 4px + 5px )) rotate(135deg);
 }
-.nav-toggle.is-active .nav-toggle__icon:after {
+.navToggle.isActive .navToggle-icon:after {
   -webkit-transform: translateY(calc(calc( 4px + 5px ) * -1)) rotate(-135deg);
           transform: translateY(calc(calc( 4px + 5px ) * -1)) rotate(-135deg);
 }
-.nav-toggle.is-active .nav-toggle__icon div {
+.navToggle.isActive .navToggle-icon div {
   -webkit-transform: scale(0);
           transform: scale(0);
 }
@@ -287,7 +287,7 @@
 /* // JavaScript is disabled
    ------------------------------ */
 @media screen and (max-width: 40em) {
-  html:not(.js) .main-nav__menu {
+  html:not(.js) .mainNav-menu {
     -webkit-flex-direction: column;
             flex-direction: column;
     clip: auto;
@@ -308,7 +308,7 @@
     transition: opacity 200ms ease-in-out;
   }
 }
-html:not(.js) .nav-toggle {
+html:not(.js) .navToggle {
   display: none;
 }
 
