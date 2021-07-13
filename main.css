@@ -1,5 +1,6 @@
-/* Nav variables & mixins
-   ------------------------------------------------------------ */
+/*------------------------------------*\
+#NAV VARIABLES AND MIXINS
+\*------------------------------------*/
 /* Styles
    ------------------------------------------------------------ */
 .mainNav > ul li ul {
@@ -147,7 +148,7 @@
     -webkit-flex-direction: column;
             flex-direction: column;
   }
-  .mainNav-menu.isActive {
+  .mainNav-menu.jsIsActive {
     clip: auto;
     -webkit-clip-path: none;
             clip-path: none;
@@ -271,15 +272,15 @@
   margin: 5px;
   transition: all 0.2s ease-in-out;
 }
-.navToggle.isActive .navToggle-icon:before {
-  -webkit-transform: translateY(calc( 4px + 5px )) rotate(135deg);
-          transform: translateY(calc( 4px + 5px )) rotate(135deg);
+.navToggle.jsIsActive .navToggle-icon:before {
+  -webkit-transform: translateY(calc(4px + 5px)) rotate(135deg);
+          transform: translateY(calc(4px + 5px)) rotate(135deg);
 }
-.navToggle.isActive .navToggle-icon:after {
-  -webkit-transform: translateY(calc(calc( 4px + 5px ) * -1)) rotate(-135deg);
-          transform: translateY(calc(calc( 4px + 5px ) * -1)) rotate(-135deg);
+.navToggle.jsIsActive .navToggle-icon:after {
+  -webkit-transform: translateY(calc(calc(4px + 5px) * -1)) rotate(-135deg);
+          transform: translateY(calc(calc(4px + 5px) * -1)) rotate(-135deg);
 }
-.navToggle.isActive .navToggle-icon div {
+.navToggle.jsIsActive .navToggle-icon div {
   -webkit-transform: scale(0);
           transform: scale(0);
 }

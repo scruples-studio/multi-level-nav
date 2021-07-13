@@ -4,7 +4,7 @@ html.className += ' js';
 
 // Add a one second delay to submenu display for mouse users.
 const hasSubmenu = document.querySelectorAll(
-  "li.mainNav-menuItem--hasSubmenu"
+  "li.mainNav-menuItem--jsHasSubmenu"
 );
 var timerSubmenu;
 Array.prototype.forEach.call(hasSubmenu, function (el, i) {
@@ -69,11 +69,11 @@ submenuLinks.forEach((link) => {
 var toggle = document.querySelector("#navToggle");
 var menu = document.querySelector("#menu");
 toggle.addEventListener("click", function () {
-  if (menu.classList.contains("isActive")) {
-    menu.classList.remove("isActive");
-    toggle.classList.remove("isActive");
+  if (menu.classList.contains("jsIsActive")) {
+    menu.classList.remove("jsIsActive");
+    toggle.classList.remove("jsIsActive");
   } else {
-    menu.classList.add("isActive");
-    toggle.classList.add("isActive");
+    menu.classList.add("jsIsActive");
+    toggle.classList.add("jsIsActive");
   }
 });

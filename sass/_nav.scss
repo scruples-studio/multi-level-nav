@@ -1,5 +1,10 @@
-/* Nav variables & mixins
-   ------------------------------------------------------------ */
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the site's nav.
+// -----------------------------------------------------------------------------
+
+/*------------------------------------*\
+#NAV VARIABLES AND MIXINS
+\*------------------------------------*/
 
 // Responsive breakpoint
 $breakpoint: 40em;
@@ -30,9 +35,10 @@ $iconColor: black;
 $iconWidth: 44px;
 $iconHeight: 4px;
 $iconMargin: 5px;
-$iconOnEvent: calc(
-  #{$iconHeight} + #{$iconMargin}
-); // Rotation translation is automatically calculated by changing the values for height and margin.
+// Rotation translation: automatically calculated
+// by changing the values for height and margin
+$iconOnEvent: calc(#{$iconHeight} + #{$iconMargin});
+
 @mixin togglePosition {
   top: 2em;
   right: 1em;
@@ -65,9 +71,6 @@ $iconOnEvent: calc(
   font-weight: bold;
 }
 
-// Fade-in animation time
-$fadeIn: 200ms;
-
 // Visually hidden styles for submenus
 @mixin hide {
   clip: rect(0 0 0 0);
@@ -81,10 +84,6 @@ $fadeIn: 200ms;
   opacity: 0; // For the animated fade-in
 }
 
-@mixin showAnimation {
-  transition: $fadeIn opacity ease-in-out;
-}
-
 @mixin show {
   clip: auto;
   clip-path: none;
@@ -94,6 +93,13 @@ $fadeIn: 200ms;
   visibility: visible;
   opacity: 1;
   transition: 0;
+}
+
+// Animation
+$fadeIn: 200ms;
+
+@mixin showAnimation {
+  transition: $fadeIn opacity ease-in-out;
 }
 
 /* Styles
@@ -193,7 +199,7 @@ $fadeIn: 200ms;
       @include hide;
       flex-direction: column;
 
-      &.isActive {
+      &.jsIsActive {
         @include show;
         @include mobileMenuPosition;
         @include mobileShowAnimation;
@@ -307,7 +313,7 @@ $fadeIn: 200ms;
     }
   }
 
-  &.isActive {
+  &.jsIsActive {
     .navToggle-icon {
       &:before {
         transform: translateY($iconOnEvent) rotate(135deg);
