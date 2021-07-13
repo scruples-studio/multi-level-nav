@@ -1,23 +1,40 @@
 // Add .js class to html tag to confirm JavaScript is enabled
 var html = document.documentElement;
-html.className += ' js';
+html.className += " js";
 
-// Add a one second delay to submenu display for mouse users.
+// Add a one second delay to submenu display for mouse users
 const hasSubmenu = document.querySelectorAll(
-  "li.mainNav-menuItem--jsHasSubmenu"
+  "li.mainNav-menuItem--hasSubmenu"
 );
 var timerSubmenu;
-Array.prototype.forEach.call(hasSubmenu, function (el, i) {
-  // Add .focus class on mouseover
-  el.addEventListener("mouseover", function (event) {
+Array.prototype.forEach.call(hasSubmenu, function (el) {
+  el.addEventListener("mouseover", function () {
     document
       .querySelector("li.mainNav-menuItem--hasSubmenu")
       .classList.add("focus");
     clearTimeout(timerSubmenu);
   });
-  // Set the delay on mouseout and remove the .focus class
-  el.addEventListener("mouseout", function (event) {
-    timerSubmenu = setTimeout(function (event) {
+  el.addEventListener("mouseout", function () {
+    timerSubmenu = setTimeout(function () {
+      document.querySelector(".focus").classList.remove("focus");
+    }, 1000);
+  });
+});
+
+// Add a one second delay to sub-submenu display for mouse users
+const hasSubSubmenu = document.querySelectorAll(
+  "li.mainNav-submenuItem--hasSubSubmenu"
+);
+var timerSubSubmenu;
+Array.prototype.forEach.call(hasSubSubmenu, function (el) {
+  el.addEventListener("mouseover", function () {
+    document
+      .querySelector("li.mainNav-submenuItem--hasSubSubmenu")
+      .classList.add("focus");
+    clearTimeout(timerSubSubmenu);
+  });
+  el.addEventListener("mouseout", function () {
+    timerSubSubmenu = setTimeout(function () {
       document.querySelector(".focus").classList.remove("focus");
     }, 1000);
   });
@@ -27,7 +44,7 @@ Array.prototype.forEach.call(hasSubmenu, function (el, i) {
 var submenuItems = document.querySelectorAll(
   "li.mainNav-menuItem--hasSubmenu"
 );
-Array.prototype.forEach.call(submenuItems, function (el, i) {
+Array.prototype.forEach.call(submenuItems, function (el) {
   el.querySelector("a").addEventListener("click", function (event) {
     if (this.parentNode.className == "mainNav-menuItem--hasSubmenu") {
       this.parentNode.className = "mainNav-menuItem--hasSubmenu open";
@@ -42,25 +59,23 @@ Array.prototype.forEach.call(submenuItems, function (el, i) {
 });
 
 // Operate the nav using focus and blur – i.e. tabbing via keyboard
-// Get links with the submenu and sub-submenu classes
 const submenuLinks = document.querySelectorAll(
   ".mainNav-menuItemLink, .mainNav-submenuItemLink"
 );
 submenuLinks.forEach((link) => {
   if (link.nextElementSibling) {
     link.addEventListener("focus", function () {
-      // Add a focus event listener to the link
-      this.parentElement.classList.add("focus"); // Add the .focus class to the parent li
-      this.setAttribute("aria-expanded", "true"); // Set aria-expanded to true on the child link
+      this.parentElement.classList.add("focus");
+      this.setAttribute("aria-expanded", "true");
     });
-    const subMenu = link.nextElementSibling; // Check for a sibling item
-    const subMenuLinks = subMenu.querySelectorAll("a"); // Get the link(s)
+    const subMenu = link.nextElementSibling;
+    const subMenuLinks = subMenu.querySelectorAll("a");
     const lastLinkIndex = subMenuLinks.length - 1;
     const lastLink = subMenuLinks[lastLinkIndex];
     lastLink.addEventListener("blur", function () {
       // Blur event
-      link.parentElement.classList.remove("focus"); // Remove the .focus class
-      link.setAttribute("aria-expanded", "false"); // Set aria-expanded to false
+      link.parentElement.classList.remove("focus");
+      link.setAttribute("aria-expanded", "false");
     });
   }
 });

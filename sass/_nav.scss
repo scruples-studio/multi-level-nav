@@ -130,7 +130,7 @@ $fadeIn: 200ms;
 //    width: auto;
 // }
 
-.main-nav {
+.mainNav {
   > ul li ul {
     @include hide;
     @include showAnimation;
@@ -225,6 +225,7 @@ $fadeIn: 200ms;
 
   &-menuItem {
     padding: 0 $itemSpacing;
+
     &:last-of-type {
       padding-right: 0;
     }

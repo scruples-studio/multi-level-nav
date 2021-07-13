@@ -13,7 +13,7 @@
 /*------------------------------------*\
   #SUBMENU FUNCTIONALITY
 \*------------------------------------*/
-.main-nav > ul li ul {
+.mainNav > ul li ul {
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);
           clip-path: inset(50%);
@@ -26,8 +26,8 @@
   opacity: 0;
   transition: 200ms opacity ease-in-out;
 }
-.main-nav > ul li:hover ul,
-.main-nav > ul li.focus ul {
+.mainNav > ul li:hover ul,
+.mainNav > ul li.focus ul {
   clip: auto;
   -webkit-clip-path: none;
           clip-path: none;
@@ -42,16 +42,16 @@
   width: auto;
 }
 @media screen and (max-width: 40em) {
-  .main-nav > ul li:hover ul,
-.main-nav > ul li.focus ul {
+  .mainNav > ul li:hover ul,
+.mainNav > ul li.focus ul {
     position: relative;
     top: auto;
     left: auto;
     width: auto;
   }
 }
-.main-nav > ul li:hover ul li ul,
-.main-nav > ul li.focus ul li ul {
+.mainNav > ul li:hover ul li ul,
+.mainNav > ul li.focus ul li ul {
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);
           clip-path: inset(50%);
@@ -64,8 +64,8 @@
   opacity: 0;
   transition: 200ms opacity ease-in-out;
 }
-.main-nav > ul li ul li:hover ul,
-.main-nav > ul li ul li.focus ul {
+.mainNav > ul li ul li:hover ul,
+.mainNav > ul li ul li.focus ul {
   clip: auto;
   -webkit-clip-path: none;
           clip-path: none;
@@ -80,8 +80,8 @@
   width: auto;
 }
 @media screen and (max-width: 40em) {
-  .main-nav > ul li ul li:hover ul,
-.main-nav > ul li ul li.focus ul {
+  .mainNav > ul li ul li:hover ul,
+.mainNav > ul li ul li.focus ul {
     position: relative;
     top: auto;
     left: auto;
