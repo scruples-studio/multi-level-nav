@@ -1,7 +1,7 @@
 /** 
  * Nav
  *
- * - Variables and mixins
+ * - Variables & mixins
  * - Submenu functionality 
  * - Basic nav styles
  * - Toggle button
@@ -9,7 +9,7 @@
  */
 
 /*------------------------------------*\
-  #VARIABLES AND MIXINS
+  #VARIABLES & MIXINS
 \*------------------------------------*/
 
 // Responsive breakpoint
@@ -142,6 +142,7 @@ $fadeIn: 200ms;
     top: $logoHeight;
     left: 0;
     width: auto;
+
     @media screen and (max-width: $breakpoint) {
       position: relative;
       top: auto;
@@ -215,7 +216,7 @@ $fadeIn: 200ms;
       @include hide;
       flex-direction: column;
 
-      &.is-active {
+      &.js-is-active {
         @include show;
         @include mobileMenuPosition;
         @include mobileShowAnimation;
@@ -225,12 +226,15 @@ $fadeIn: 200ms;
 
   &__menu-item {
     padding: 0 $itemSpacing;
+
     &:last-of-type {
       padding-right: 0;
     }
+
     &:hover:not([aria-current="page"]) {
       @include linkHover;
     }
+
     &[aria-current="page"] {
       @include currentPage;
     }
@@ -238,13 +242,16 @@ $fadeIn: 200ms;
     &--has-submenu {
       padding: 0 $itemSpacing;
       position: relative;
+
       &[aria-current="page"] {
         @include currentPage;
       }
+
       @media screen and (max-width: $breakpoint) {
         width: calc(100% - 1em);
       }
     }
+
     @media screen and (max-width: $breakpoint) {
       width: calc(100% - 1em);
     }
@@ -264,12 +271,14 @@ $fadeIn: 200ms;
   &__submenu {
     background: $submenuBG;
   }
+
   &__submenu-item {
     &--has-sub-submenu {
       position: relative;
       display: block;
     }
   }
+
   &__submenu-item-link {
     padding: $submenuItemSpacing;
     white-space: nowrap;
@@ -277,13 +286,16 @@ $fadeIn: 200ms;
 
   &__sub-submenu {
     background: $subSubmenuBG;
+
     @media screen and (max-width: $breakpoint) {
       background: $subSubmenuBG;
     }
   }
+
   &__sub-submenu-item {
     background: $subSubmenuBG;
   }
+
   &__sub-submenu-item-link {
     padding: $submenuItemSpacing;
     white-space: nowrap;
@@ -318,6 +330,7 @@ $fadeIn: 200ms;
 
   &__icon {
     width: $iconWidth;
+
     &:after,
     &:before,
     div {
@@ -331,14 +344,16 @@ $fadeIn: 200ms;
     }
   }
 
-  &.is-active {
+  &.js-is-active {
     .nav-toggle__icon {
       &:before {
         transform: translateY($iconOnEvent) rotate(135deg);
       }
+
       &:after {
         transform: translateY(calc(#{$iconOnEvent} * -1)) rotate(-135deg);
       }
+
       div {
         transform: scale(0);
       }
@@ -362,6 +377,7 @@ html:not(.js) {
       }
     }
   }
+
   .nav-toggle {
     // Remove the toggle button
     display: none;

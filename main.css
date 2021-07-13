@@ -1,14 +1,14 @@
 /** 
  * Nav
  *
- * - Variables and mixins
+ * - Variables & mixins
  * - Submenu functionality 
  * - Basic nav styles
  * - Toggle button
  * - JavaScript disabled 
  */
 /*------------------------------------*\
-  #VARIABLES AND MIXINS
+  #VARIABLES & MIXINS
 \*------------------------------------*/
 /*------------------------------------*\
   #SUBMENU FUNCTIONALITY
@@ -148,7 +148,7 @@
     -webkit-flex-direction: column;
             flex-direction: column;
   }
-  .main-nav__menu.is-active {
+  .main-nav__menu.js-is-active {
     clip: auto;
     -webkit-clip-path: none;
             clip-path: none;
@@ -273,15 +273,15 @@
   margin: 5px;
   transition: all 0.2s ease-in-out;
 }
-.nav-toggle.is-active .nav-toggle__icon:before {
+.nav-toggle.js-is-active .nav-toggle__icon:before {
   -webkit-transform: translateY(calc(4px + 5px)) rotate(135deg);
           transform: translateY(calc(4px + 5px)) rotate(135deg);
 }
-.nav-toggle.is-active .nav-toggle__icon:after {
+.nav-toggle.js-is-active .nav-toggle__icon:after {
   -webkit-transform: translateY(calc(calc(4px + 5px) * -1)) rotate(-135deg);
           transform: translateY(calc(calc(4px + 5px) * -1)) rotate(-135deg);
 }
-.nav-toggle.is-active .nav-toggle__icon div {
+.nav-toggle.js-is-active .nav-toggle__icon div {
   -webkit-transform: scale(0);
           transform: scale(0);
 }
