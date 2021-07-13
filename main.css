@@ -1,9 +1,19 @@
+/** 
+ * NAV
+ *
+ * - Variables & mixins
+ * - Submenu functionality 
+ * - Basic nav styles
+ * - Toggle button
+ * - JavaScript disabled 
+ */
 /*------------------------------------*\
-#NAV VARIABLES AND MIXINS
+  #VARIABLES & MIXINS
 \*------------------------------------*/
-/* Styles
-   ------------------------------------------------------------ */
-.mainNav > ul li ul {
+/*------------------------------------*\
+  #SUBMENU FUNCTIONALITY
+\*------------------------------------*/
+.main-nav > ul li ul {
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);
           clip-path: inset(50%);
@@ -15,20 +25,9 @@
   visibility: hidden;
   opacity: 0;
   transition: 200ms opacity ease-in-out;
-  /*
-  @include show;
-  top: $logoHeight;
-  left: 0;
-  width: auto;
-  @media screen and (max-width: $breakpoint) {
-    position: relative;
-    top: auto;
-    left: auto;
-    width: auto;
-  }*/
 }
-.mainNav > ul li:hover ul,
-.mainNav > ul li.focus ul {
+.main-nav > ul li:hover ul,
+.main-nav > ul li.focus ul {
   clip: auto;
   -webkit-clip-path: none;
           clip-path: none;
@@ -43,16 +42,16 @@
   width: auto;
 }
 @media screen and (max-width: 40em) {
-  .mainNav > ul li:hover ul,
-.mainNav > ul li.focus ul {
+  .main-nav > ul li:hover ul,
+.main-nav > ul li.focus ul {
     position: relative;
     top: auto;
     left: auto;
     width: auto;
   }
 }
-.mainNav > ul li:hover ul li ul,
-.mainNav > ul li.focus ul li ul {
+.main-nav > ul li:hover ul li ul,
+.main-nav > ul li.focus ul li ul {
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);
           clip-path: inset(50%);
@@ -65,8 +64,8 @@
   opacity: 0;
   transition: 200ms opacity ease-in-out;
 }
-.mainNav > ul li ul li:hover ul,
-.mainNav > ul li ul li.focus ul {
+.main-nav > ul li ul li:hover ul,
+.main-nav > ul li ul li.focus ul {
   clip: auto;
   -webkit-clip-path: none;
           clip-path: none;
@@ -81,16 +80,17 @@
   width: auto;
 }
 @media screen and (max-width: 40em) {
-  .mainNav > ul li ul li:hover ul,
-.mainNav > ul li ul li.focus ul {
+  .main-nav > ul li ul li:hover ul,
+.main-nav > ul li ul li.focus ul {
     position: relative;
     top: auto;
     left: auto;
   }
 }
 
-/* Default styles 
-   ------------------------------ */
+/*------------------------------------*\
+  #BASIC NAV STYLES
+\*------------------------------------*/
 .mainNav {
   background: #fff;
   padding: 1em;
@@ -235,8 +235,9 @@
   white-space: nowrap;
 }
 
-/* Toggle button 
-   ------------------------------ */
+/*------------------------------------*\ 
+  #TOGGLE BUTTON 
+\*------------------------------------*/
 .navToggle {
   -webkit-tap-highlight-color: blue;
   -webkit-touch-callout: none;
@@ -285,8 +286,9 @@
           transform: scale(0);
 }
 
-/* // JavaScript is disabled
-   ------------------------------ */
+/*------------------------------------*\
+  #JAVASCRIPT DISABLED 
+\*------------------------------------*/
 @media screen and (max-width: 40em) {
   html:not(.js) .mainNav-menu {
     -webkit-flex-direction: column;

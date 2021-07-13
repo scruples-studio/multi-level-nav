@@ -1,9 +1,15 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the site's nav.
-// -----------------------------------------------------------------------------
+/** 
+ * NAV
+ *
+ * - Variables & mixins
+ * - Submenu functionality 
+ * - Basic nav styles
+ * - Toggle button
+ * - JavaScript disabled 
+ */
 
 /*------------------------------------*\
-#NAV VARIABLES AND MIXINS
+  #VARIABLES & MIXINS
 \*------------------------------------*/
 
 // Responsive breakpoint
@@ -102,28 +108,34 @@ $fadeIn: 200ms;
   transition: $fadeIn opacity ease-in-out;
 }
 
-/* Styles
-   ------------------------------------------------------------ */
+/*------------------------------------*\
+  #SUBMENU FUNCTIONALITY
+\*------------------------------------*/
 
-// Submenu functionality
-.mainNav {
+// To display the entire nav structure in the
+// mobile flyout start with the following and
+// edit the rest of the section accordingly.
+
+// .main-nav > ul li ul {
+//   @include show;
+//   @include showAnimation;
+//   top: $logoHeight;
+//   left: 0;
+//   width: auto;
+
+//   @media screen and (max-width: $breakpoint) {
+//     position: relative;
+//     top: auto;
+//    left: auto;
+//    width: auto;
+// }
+
+.main-nav {
   > ul li ul {
     @include hide;
     @include showAnimation;
-
-    // Uncomment to show the entire nav structure in the mobile flyout and edit the rest of the "Submenu functionality" section accordingly.
-    /*
-    @include show;
-    top: $logoHeight;
-    left: 0;
-    width: auto;
-    @media screen and (max-width: $breakpoint) {
-      position: relative;
-      top: auto;
-      left: auto;
-      width: auto;
-    }*/
   }
+
   > ul li:hover ul,
   > ul li.focus ul {
     @include show;
@@ -137,11 +149,13 @@ $fadeIn: 200ms;
       width: auto;
     }
   }
+
   > ul li:hover ul li ul,
   > ul li.focus ul li ul {
     @include hide;
     @include showAnimation;
   }
+
   > ul li ul li:hover ul,
   > ul li ul li.focus ul {
     @include show;
@@ -157,8 +171,10 @@ $fadeIn: 200ms;
   }
 }
 
-/* Default styles 
-   ------------------------------ */
+/*------------------------------------*\
+  #BASIC NAV STYLES
+\*------------------------------------*/
+
 .mainNav {
   background: $navBG;
   padding: 1em;
@@ -212,9 +228,11 @@ $fadeIn: 200ms;
     &:last-of-type {
       padding-right: 0;
     }
+
     &:hover:not([aria-current="page"]) {
       @include linkHover;
     }
+
     &[aria-current="page"] {
       @include currentPage;
     }
@@ -222,13 +240,16 @@ $fadeIn: 200ms;
     &--hasSubmenu {
       padding: 0 $itemSpacing;
       position: relative;
+
       &[aria-current="page"] {
         @include currentPage;
       }
+
       @media screen and (max-width: $breakpoint) {
         width: calc(100% - 1em);
       }
     }
+
     @media screen and (max-width: $breakpoint) {
       width: calc(100% - 1em);
     }
@@ -248,12 +269,14 @@ $fadeIn: 200ms;
   &-submenu {
     background: $submenuBG;
   }
+
   &-submenuItem {
     &--hasSubSubmenu {
       position: relative;
       display: block;
     }
   }
+
   &-submenuItemLink {
     padding: $submenuItemSpacing;
     white-space: nowrap;
@@ -265,17 +288,21 @@ $fadeIn: 200ms;
       background: $subSubmenuBG;
     }
   }
+
   &-subSubmenuItem {
     background: $subSubmenuBG;
   }
+
   &-subSubmenuItemLink {
     padding: $submenuItemSpacing;
     white-space: nowrap;
   }
 }
 
-/* Toggle button 
-   ------------------------------ */
+/*------------------------------------*\ 
+  #TOGGLE BUTTON 
+\*------------------------------------*/
+
 .navToggle {
   -webkit-tap-highlight-color: $webkit-tap-highlight-color;
   -webkit-touch-callout: none;
@@ -300,6 +327,7 @@ $fadeIn: 200ms;
 
   &-icon {
     width: $iconWidth;
+
     &:after,
     &:before,
     div {
@@ -318,9 +346,11 @@ $fadeIn: 200ms;
       &:before {
         transform: translateY($iconOnEvent) rotate(135deg);
       }
+
       &:after {
         transform: translateY(calc(#{$iconOnEvent} * -1)) rotate(-135deg);
       }
+
       div {
         transform: scale(0);
       }
@@ -328,8 +358,10 @@ $fadeIn: 200ms;
   }
 }
 
-/* // JavaScript is disabled
-   ------------------------------ */
+/*------------------------------------*\
+  #JAVASCRIPT DISABLED 
+\*------------------------------------*/
+
 html:not(.js) {
   .mainNav {
     &-menu {
