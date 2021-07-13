@@ -1,5 +1,16 @@
-/* Nav variables & mixins
-   ------------------------------------------------------------ */
+/** 
+ * Nav
+ *
+ * - Variables and mixins
+ * - Submenu functionality 
+ * - Basic nav styles
+ * - Toggle button
+ * - JavaScript disabled 
+ */
+
+/*------------------------------------*\
+  #VARIABLES AND MIXINS
+\*------------------------------------*/
 
 // Responsive breakpoint
 $breakpoint: 40em;
@@ -30,9 +41,10 @@ $iconColor: black;
 $iconWidth: 44px;
 $iconHeight: 4px;
 $iconMargin: 5px;
-$iconOnEvent: calc(
-  #{$iconHeight} + #{$iconMargin}
-); // Rotation translation is automatically calculated by changing the values for height and margin.
+// Rotation translation: automatically calculated
+// by changing the values for height and margin
+$iconOnEvent: calc(#{$iconHeight} + #{$iconMargin});
+
 @mixin togglePosition {
   top: 2em;
   right: 1em;
@@ -65,9 +77,6 @@ $iconOnEvent: calc(
   font-weight: bold;
 }
 
-// Fade-in animation time
-$fadeIn: 200ms;
-
 // Visually hidden styles for submenus
 @mixin hide {
   clip: rect(0 0 0 0);
@@ -81,10 +90,6 @@ $fadeIn: 200ms;
   opacity: 0; // For the animated fade-in
 }
 
-@mixin showAnimation {
-  transition: $fadeIn opacity ease-in-out;
-}
-
 @mixin show {
   clip: auto;
   clip-path: none;
@@ -96,28 +101,41 @@ $fadeIn: 200ms;
   transition: 0;
 }
 
-/* Styles
-   ------------------------------------------------------------ */
+// Animation
+$fadeIn: 200ms;
 
-// Submenu functionality
+@mixin showAnimation {
+  transition: $fadeIn opacity ease-in-out;
+}
+
+/*------------------------------------*\
+  #SUBMENU FUNCTIONALITY
+\*------------------------------------*/
+
+// To display the entire nav structure in the
+// mobile flyout start with the following and
+// edit the rest of the section accordingly.
+
+// .main-nav > ul li ul {
+//   @include show;
+//   @include showAnimation;
+//   top: $logoHeight;
+//   left: 0;
+//   width: auto;
+
+//   @media screen and (max-width: $breakpoint) {
+//     position: relative;
+//     top: auto;
+//    left: auto;
+//    width: auto;
+// }
+
 .main-nav {
   > ul li ul {
     @include hide;
     @include showAnimation;
-
-    // Uncomment to show the entire nav structure in the mobile flyout and edit the rest of the "Submenu functionality" section accordingly.
-    /*
-    @include show;
-    top: $logoHeight;
-    left: 0;
-    width: auto;
-    @media screen and (max-width: $breakpoint) {
-      position: relative;
-      top: auto;
-      left: auto;
-      width: calc(100% - 1em);
-    }*/
   }
+
   > ul li:hover ul,
   > ul li.focus ul {
     @include show;
@@ -128,15 +146,16 @@ $fadeIn: 200ms;
       position: relative;
       top: auto;
       left: auto;
-      // width: calc(100% - 1em);
       width: auto;
     }
   }
+
   > ul li:hover ul li ul,
   > ul li.focus ul li ul {
     @include hide;
     @include showAnimation;
   }
+
   > ul li ul li:hover ul,
   > ul li ul li.focus ul {
     @include show;
@@ -152,8 +171,10 @@ $fadeIn: 200ms;
   }
 }
 
-/* Default styles 
-   ------------------------------ */
+/*------------------------------------*\
+  #BASIC NAV STYLES
+\*------------------------------------*/
+
 .main-nav {
   background: $navBG;
   padding: 1em;
@@ -269,8 +290,10 @@ $fadeIn: 200ms;
   }
 }
 
-/* Toggle button 
-   ------------------------------ */
+/*------------------------------------*\ 
+  #TOGGLE BUTTON 
+\*------------------------------------*/
+
 .nav-toggle {
   -webkit-tap-highlight-color: $webkit-tap-highlight-color;
   -webkit-touch-callout: none;
@@ -323,8 +346,10 @@ $fadeIn: 200ms;
   }
 }
 
-/* // JavaScript is disabled
-   ------------------------------ */
+/*------------------------------------*\
+  #JAVASCRIPT DISABLED 
+\*------------------------------------*/
+
 html:not(.js) {
   .main-nav {
     &__menu {
