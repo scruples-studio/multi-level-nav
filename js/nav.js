@@ -21,25 +21,6 @@ Array.prototype.forEach.call(hasSubmenu, function (el) {
   });
 });
 
-// Add a one second delay to sub-submenu display for mouse users
-const hasSubSubmenu = document.querySelectorAll(
-  "li.mainNav-submenuItem--hasSubSubmenu"
-);
-var timerSubSubmenu;
-Array.prototype.forEach.call(hasSubSubmenu, function (el) {
-  el.addEventListener("mouseover", function () {
-    document
-      .querySelector("li.mainNav-submenuItem--hasSubSubmenu")
-      .classList.add("focus");
-    clearTimeout(timerSubSubmenu);
-  });
-  el.addEventListener("mouseout", function () {
-    timerSubSubmenu = setTimeout(function () {
-      document.querySelector(".focus").classList.remove("focus");
-    }, 1000);
-  });
-});
-
 // Set up the parent link as the submenu toggle
 var submenuItems = document.querySelectorAll(
   "li.mainNav-menuItem--hasSubmenu"
